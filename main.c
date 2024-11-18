@@ -1,6 +1,7 @@
 #include "admin.h"
 #include "clientes.h"
 #include "criptomoedas.h"
+#include "menu_funcoes.h"
 #include <stdlib.h>
 
 int main(){
@@ -64,7 +65,7 @@ int main(){
         getchar();
         switch(opcao){
           case '1':
-            
+            lista_Clientes = registrarCliente(lista_Clientes);
             break;
           case '2':
             
