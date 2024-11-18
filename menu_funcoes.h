@@ -7,6 +7,9 @@
 #define MENU_FUNCOES_H
 
 //Registro
-ListaClientes registrarCliente(ListaClientes lista_Clientes);
+ListaClientes RegistrarCliente(ListaClientes lista_Clientes);
+
+//Consulta de saldo
+void ConsultarSaldo(ListaClientes lista_Clientes);
 
 #endif 

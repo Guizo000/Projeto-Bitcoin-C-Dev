@@ -143,7 +143,8 @@ ListaAdmins logarAdmin(ListaAdmins lista_admins, bool* voltarMenu){
         printf("Erro ao abrir o arquivo. Nenhum admin registrado\n");
         return lista_admins;
     }
-
+    fclose(file);
+    
     while(true){
         printf("Digite seu cpf: ");
         char cpf[50];
