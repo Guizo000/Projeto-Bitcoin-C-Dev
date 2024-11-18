@@ -65,7 +65,7 @@ int main(){
         getchar();
         switch(opcao){
           case '1':
-            lista_Clientes = registrarCliente(lista_Clientes);
+            lista_Clientes = RegistrarCliente(lista_Clientes);
             break;
           case '2':
             
@@ -80,7 +80,7 @@ int main(){
             
             break;
           case '6':
-            
+            ConsultarSaldo(lista_Clientes);
             break;
           case '7':
             

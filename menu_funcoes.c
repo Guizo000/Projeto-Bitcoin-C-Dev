@@ -1,7 +1,8 @@
 #include "menu_funcoes.h"
 
 //REALIZA O REGISTRO
-ListaClientes registrarCliente(ListaClientes lista_Clientes){
+ListaClientes RegistrarCliente(ListaClientes lista_Clientes){
+
     //INPUT E VERIFICAÇÃO DO CPF
     while(true){
         printf("Digite o cpf do novo investidor -> Sem traco nem pontos: ");
@@ -65,4 +66,32 @@ ListaClientes registrarCliente(ListaClientes lista_Clientes){
         printf("\n");
         return lista_Clientes;
     }
+}
+
+//CONSULTA DO SALDO
+void ConsultarSaldo(ListaClientes lista_Clientes){
+    FILE* file;
+    file = fopen("usuario.txt", "rb");
+    if (file == NULL){
+        printf("Nenhum investidor registrado\n");
+        return;
+    }
+    fclose(file);
+    
+    //ESCOLHENDO CLIENTE
+    printf("Digite o cpf do investidor: ");
+        char cpf[50];
+        scanf("%s", cpf);
+        getchar();
+
+    for(int i = 0; i < sizeof(lista_Clientes.clientes)/sizeof(lista_Clientes.clientes[0]); i++){
+        if(strcmp(cpf, lista_Clientes.clientes[i].cpf) == 0){
+            lista_Clientes.clienteAtual = i;
+        }
+    }
+
+    printf("\nReais: %.2f", lista_Clientes.clientes[lista_Clientes.clienteAtual].saldoReais);
+    printf("\nBitcoins: %.2f", lista_Clientes.clientes[lista_Clientes.clienteAtual].saldoBitcoin);
+    printf("\nEthereum: %.2f", lista_Clientes.clientes[lista_Clientes.clienteAtual].saldoEthereum);
+    printf("\nRipple: %.2f\n\n", lista_Clientes.clientes[lista_Clientes.clienteAtual].saldoRipple);
 }
