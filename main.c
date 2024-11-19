@@ -11,7 +11,7 @@ int main(){
     ListaAdmins lista_admins;
     lista_admins = TxtToArrayAdmin(lista_admins);
 
-    //Menu Login/Registro
+    //Menu login/registro
     bool voltarmenu = true;
     while(voltarmenu){
         char menuInicial;
@@ -45,7 +45,7 @@ int main(){
         }
     }
 
-    //Menu Usuario
+    //Menu admin
     Criptomoedas criptomoedas;
     criptomoedas = TxtToCripto(criptomoedas);
 
@@ -55,11 +55,10 @@ int main(){
         printf("1. Cadastro de Novo Investidor\n");
         printf("2. Excluir Investidor\n");
         printf("3. Cadastro de Criptomoeda\n");
-        printf("4. Excluir Ciptomoeda\n");
-        printf("5. Comprar Criptomoeda\n");
-        printf("6. Consultar Saldo Investidor\n");
-        printf("7. Consultar Extrato Investidor\n");
-        printf("8. Sair\n");
+        printf("4. Excluir Criptomoeda\n");
+        printf("5. Consultar Saldo Investidor\n");
+        printf("6. Consultar Extrato Investidor\n");
+        printf("7. Sair\n");
         printf("\nDigite a opcao desejada: ");
         scanf("%c", &opcao);
         getchar();
@@ -68,7 +67,7 @@ int main(){
             lista_Clientes = RegistrarCliente(lista_Clientes);
             break;
           case '2':
-            
+            lista_Clientes = ExcluirCliente(lista_Clientes);
             break;
           case '3':
             
@@ -77,15 +76,12 @@ int main(){
             
             break;
           case '5':
-            
-            break;
-          case '6':
             ConsultarSaldo(lista_Clientes);
             break;
-          case '7':
+          case '6':
             ConsultarExtrato(lista_Clientes);
             break;
-          case '8':
+          case '7':
             printf("Saindo...");
             return 0;
             break;
@@ -95,7 +91,6 @@ int main(){
           }
 
           ArrayToTXTAdmin(lista_admins);
-          ArrayToTXT(lista_Clientes);
           CriptoToTXT(criptomoedas);
     }
 }

@@ -5,10 +5,10 @@
 //PASSA A ATUAL COTAÇÃO DAS CRIPTOS DO TXT PARA A STRUCT CRIPTOMOEDAS
 Criptomoedas TxtToCripto(Criptomoedas criptomoedas){
   FILE* file;
-  file = fopen("criptomoedas.txt", "rb");
+  file = fopen("../Projeto_Cripto/criptomoedas.txt", "rb");
 
   if (file == NULL){
-      file = fopen("criptomoedas.txt", "wb");
+      file = fopen("../Projeto_Cripto/criptomoedas.txt", "wb");
       fclose(file);
       criptomoedas.bitcoin = 351115;
       criptomoedas.ethereum = 12980;
@@ -37,7 +37,7 @@ Criptomoedas TxtToCripto(Criptomoedas criptomoedas){
 //SALVA A ATUAL COTAÇÃO DAS CRIPTOS EM UM TXT
 void CriptoToTXT(Criptomoedas criptomoedas){
   FILE* file;
-  file = fopen("criptomoedas.txt", "wb");
+  file = fopen("../Projeto_Cripto/criptomoedas.txt", "wb");
 
   char bitcoin[50];
   snprintf(bitcoin, sizeof bitcoin, "%.2f", criptomoedas.bitcoin);
