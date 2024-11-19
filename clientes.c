@@ -3,7 +3,7 @@
 //PASSA AS INFORMAÇÕES DA STRUCT LISTA CLIENTES PRO TXT
 void ArrayToTXT(ListaClientes lista_Clientes){
     FILE* file;
-    file = fopen("usuario.txt", "wb");
+    file = fopen("../Projeto_Cripto/usuario.txt", "wb");
     fwrite(lista_Clientes.clientes, sizeof(lista_Clientes.clientes), 1, file);
     fclose(file);
 }   
@@ -11,11 +11,11 @@ void ArrayToTXT(ListaClientes lista_Clientes){
 //PASSA AS INFORMAÇÕES DO CLIENTES PRA STRUCY LISTA CLIENTES
 ListaClientes TxtToArray(ListaClientes lista_Clientes){
     FILE* file;
-    file = fopen("usuario.txt", "rb");
+    file = fopen("../Projeto_Cripto/usuario.txt", "rb");
     fread(lista_Clientes.clientes, sizeof(lista_Clientes.clientes), 1, file);
     fclose(file);
 
-    //ATUALIZANDO QUANTIDADE DE CLIENTES
+    //Atualizando qtd clientes
     int i = 0;
     int placeHolderForQtdClientes = 0;
     for(i; i < sizeof(lista_Clientes.clientes) / sizeof(lista_Clientes.clientes[0]); i++){

@@ -40,7 +40,7 @@ ListaAdmins TxtToArrayAdmin(ListaAdmins lista_admins){
     fread(lista_admins.admins, sizeof(lista_admins.admins), 1, file);
     fclose(file);
 
-    //ATUALIZANDO QUANTIDADE DE ADMINS
+    //Atualizando qtd admins
     int i = 0;
     int placeHolderForQtdAdmins = 0;
     for(i; i < sizeof(lista_admins.admins) / sizeof(lista_admins.admins[0]); i++){
@@ -56,7 +56,7 @@ ListaAdmins TxtToArrayAdmin(ListaAdmins lista_admins){
 
 //REGISTRO
 ListaAdmins registrarAdmin(ListaAdmins lista_admins, bool* voltarMenu){
-    //INPUT E VERIFICAÇÃO DO CPF
+    //Input e verificação do cpf
     while(true){
         printf("Digite seu cpf -> Sem traco nem pontos: ");
         char cpf[50];
@@ -106,7 +106,7 @@ ListaAdmins registrarAdmin(ListaAdmins lista_admins, bool* voltarMenu){
             }
         }
 
-        //INPUT E VERIFICAÇÃO DA SENHA
+        //Input e verificação a senha
         printf("Digite sua senha -> Entre 5 e 10 caracteres: ");
         char senha[50];
         scanf("%s", senha);
@@ -122,7 +122,7 @@ ListaAdmins registrarAdmin(ListaAdmins lista_admins, bool* voltarMenu){
             }   
         }
 
-        //PASSANDO REGISTRO PRO LISTA ADMINS E ATUALIZANDO QTD ADMINS
+        //Passando registro pro lista admins e atualizando qtd admins
         
         strcpy(lista_admins.admins[lista_admins.qtdAdmins].senha, senha);
         strcpy(lista_admins.admins[lista_admins.qtdAdmins].cpf, cpf);
@@ -143,7 +143,8 @@ ListaAdmins logarAdmin(ListaAdmins lista_admins, bool* voltarMenu){
         printf("Erro ao abrir o arquivo. Nenhum admin registrado\n");
         return lista_admins;
     }
-
+    fclose(file);
+    
     while(true){
         printf("Digite seu cpf: ");
         char cpf[50];
