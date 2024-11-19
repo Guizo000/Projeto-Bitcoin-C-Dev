@@ -70,10 +70,12 @@ ListaClientes RegistrarCliente(ListaClientes lista_Clientes){
 
 //CONSULTA DO SALDO
 void ConsultarSaldo(ListaClientes lista_Clientes){
+    //VERIFICANDO SE EXISTE CLIENTES REGISTRADOS
     FILE* file;
     file = fopen("usuario.txt", "rb");
     if (file == NULL){
-        printf("Nenhum investidor registrado\n");
+        printf("Nenhum investidor registrado\n\n");
+        fclose(file);
         return;
     }
     fclose(file);
@@ -84,14 +86,71 @@ void ConsultarSaldo(ListaClientes lista_Clientes){
         scanf("%s", cpf);
         getchar();
 
+    bool clienteEncontrado = false;
     for(int i = 0; i < sizeof(lista_Clientes.clientes)/sizeof(lista_Clientes.clientes[0]); i++){
         if(strcmp(cpf, lista_Clientes.clientes[i].cpf) == 0){
             lista_Clientes.clienteAtual = i;
+            clienteEncontrado = true;
         }
+    }
+    if(!clienteEncontrado) { 
+        printf("Investidor nao encontrado\n\n");
+        return; 
     }
 
     printf("\nReais: %.2f", lista_Clientes.clientes[lista_Clientes.clienteAtual].saldoReais);
     printf("\nBitcoins: %.2f", lista_Clientes.clientes[lista_Clientes.clienteAtual].saldoBitcoin);
     printf("\nEthereum: %.2f", lista_Clientes.clientes[lista_Clientes.clienteAtual].saldoEthereum);
     printf("\nRipple: %.2f\n\n", lista_Clientes.clientes[lista_Clientes.clienteAtual].saldoRipple);
+}
+
+
+
+//CONSULTA DO EXTRATO
+void ConsultarExtrato(ListaClientes lista_Clientes){
+    //VERIFICANDO SE EXISTE CLIENTES REGISTRADOS
+    FILE* file;
+    file = fopen("usuario.txt", "rb");
+    if (file == NULL){
+        printf("Nenhum investidor registrado\n\n");
+        fclose(file);
+        return;
+    }
+    fclose(file);
+
+    //ESCOLHENDO CLIENTE
+    printf("Digite o cpf do investidor: ");
+        char cpf[50];
+        scanf("%s", cpf);
+        getchar();
+
+    bool clienteEncontrado = false;
+    for(int i = 0; i < sizeof(lista_Clientes.clientes)/sizeof(lista_Clientes.clientes[0]); i++){
+        if(strcmp(cpf, lista_Clientes.clientes[i].cpf) == 0){
+            lista_Clientes.clienteAtual = i;
+            clienteEncontrado = true;
+        }
+    }
+    if(!clienteEncontrado) { 
+        printf("Investidor nao encontrado\n\n");
+        return; 
+    }
+
+
+    file = fopen(lista_Clientes.clientes[lista_Clientes.clienteAtual].extrato, "rb");
+
+    //VERIFICANDO SE O CLIENTE ESCOLHIDO POSSUI UM EXTRATO
+    if (file == NULL){
+        printf("Extrato nao encontrado\n\n");
+        fclose(file);
+        return;
+    }
+
+    printf("\n\n");
+    char teste[300];
+    while(fgets(teste, sizeof(teste), file)){
+        printf("%s", teste);
+    }
+    printf("\n\n");
+    fclose(file);
 }

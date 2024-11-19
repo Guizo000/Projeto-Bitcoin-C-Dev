@@ -2,7 +2,15 @@
 
 //PASSA AS INFORMAÇÕES DA STRUCT LISTA CLIENTES PRO TXT
 void ArrayToTXT(ListaClientes lista_Clientes){
+    //VERIFICANDO SE JA FOI REGISTRADO ALGUM CLIENTE
     FILE* file;
+    file = fopen("usuario.txt", "rb");
+    if (file == NULL){
+        fclose(file);
+        return;
+    }
+    fclose(file);
+
     file = fopen("usuario.txt", "wb");
     fwrite(lista_Clientes.clientes, sizeof(lista_Clientes.clientes), 1, file);
     fclose(file);

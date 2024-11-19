@@ -12,4 +12,6 @@ ListaClientes RegistrarCliente(ListaClientes lista_Clientes);
 //Consulta de saldo
 void ConsultarSaldo(ListaClientes lista_Clientes);
 
+//Consulta do Extrato
+void ConsultarExtrato(ListaClientes lista_Clientes);
 #endif 
