@@ -83,7 +83,7 @@ int main(){
             ConsultarSaldo(lista_Clientes);
             break;
           case '7':
-            
+            ConsultarExtrato(lista_Clientes);
             break;
           case '8':
             printf("Saindo...");
