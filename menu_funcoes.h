@@ -9,6 +9,9 @@
 //Registro
 ListaClientes RegistrarCliente(ListaClientes lista_Clientes);
 
+//Exclusão
+ListaClientes ExcluirCliente(ListaClientes lista_Clientes);
+
 //Consulta de saldo
 void ConsultarSaldo(ListaClientes lista_Clientes);
 
