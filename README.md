@@ -2,64 +2,48 @@ Criadores:
 Érik Ordine Garcia     RA: 22.224.021-0
 Guilherme Rocha Santos RA: 22.124.061-7
 
-Este repositório contém a implementação de um sistema em C que gerencia carteiras de clientes, permitindo a compra e venda de criptomoedas. As operações são realizadas utilizando a leitura e escrita em arquivos binários para manter os registros das transações de criptomoedas.
+Este repositório contém a implementação de um sistema em C para gerenciamento e uma exchange e criptomoedas, nele você podera exluir e adicionar investidores, atualizar a cotação e conferir os dados os clientes.
 
 ** Estrutura de Arquivos **
-- projeto.c: Arquivo principal onde o programa é executado.
-- cliente.h: Cabeçalho que contém as definições das estruturas de cliente e funções relacionadas à carteira de clientes.
-- cliente.c: Contém as funções relacionadas à gestão dos clientes.
+- main.c: Arquivo principal onde o programa é executado - contém o menu.
+- admin.h: Cabeçalho que contém as definições das estruturas de admin.
+- admin.c: Contém as funções relacionadas ao login e cadastro de admins.
 - criptomoedas.h: Cabeçalho que contém as definições das estruturas e funções relacionadas a criptomoedas.
-- criptomoedas.c: Contém as funções relacionadas à gestão dos clientes.
-- clientes.txt: Arquivo binário onde as informações dos clientes e suas carteiras são armazenadas.
-- criptomoedas.txt: Arquivo binário onde as transações de criptomoedas são armazenadas.
+- criptomoedas.c: Contém as funções relacionadas à escrita das criptomoedas em struct e txt.
+- menu_funcoes.h: Cabeçalho que contém as definições das estruturas e funções que o admin pode executar.
+- menu_funcoes.c: Contém as funções que o amin poe executar.
+- clientes.h: Cabeçalho que contém as definições das estruturas de clientes.
+- clientes.c: Contém as funções relacionadas ao cadastro e login de clientes.
 
 
 ** Funcionalidades **
 O sistema oferece as seguintes funcionalidades:
 
-1. Cadastro de Clientes:
-  - ArrayToTXT: Salva a lista de clientes em um arquivo chamado
-  - usuario.txt no formato binário.
-  - TxtToArray: Lê os dados do arquivo usuario.txt e os armazena na estrutura de dados da lista de clientes.
+1. Cadastro de Novo Investidor:
+  - Permite que o admin cadastre um novo investidor
     
-2. Leitura e Escrita em Arquivos:
-  - Permite que novos clientes se cadastrem no sistema fornecendo CPF e senha.
-  - Verifica se o CPF já está registrado e se é válido (deve ter 11 dígitos numéricos).
-  - A senha deve ter entre 5 e 10 caracteres.
+2. Remoção de um Investidor:
+  - Permite que o admin remova qualquer investidor ja existente 
 
-3. Depósito de Criptomoedas:
-  - Permite que os clientes façam depósitos em suas contas.
-  - Valida a entrada para garantir que apenas valores numéricos sejam aceitos.
+3. Consulta ao Saldo de um Investidor:
+  - Permite que o admin consulte o saldo de qualquer investidor
 
-4. Saque de Criptomoedas:
-  - Permite que os clientes realizem saques de suas contas.
-  - Assim como no depósito, a função valida a entrada para aceitar somente valores numéricos.
+4. Consulta ao Extrato de um Investidor:
+  - Permite que o admin consulte o extrato de qualquer investidor
 
-5. Geração de Extratos de Transações:
-  - Gera um extrato detalhado das transações realizadas pelo cliente.
-  - Exibe a data, valores e taxas das transações de forma clara e organizada.
-
-6. Geração de Extrato:
-  - VoltarMenu: Função que permite ao usuário escolher entre recomeçar o processo de cadastro ou voltar ao menu principal.
-  - Proporciona uma experiência interativa ao usuário, evitando erros de navegação.
+5. Atualizar Cotação de Criptomoedas:
+  - Permite que o admin atualize a cotação de criptomoedas
 
 
-** Fluxo de Operações **
-- O usuário executa o programa e seleciona a operação desejada (cadastrar cliente, consultar saldo, realizar depósito, etc.).
-- Dependendo da operação, o sistema solicita as informações necessárias e processa a solicitação.
-- Os dados de clientes e transações são gravados e lidos de arquivos binários para garantir persistência.
-- O extrato pode ser gerado a qualquer momento, exibindo todas as transações realizadas pelo cliente.
 
+**OBSERVAÇÂO:**
+Para que o programa de admin fucione corretamente em conjunto com o programa de investidor, eles devem estar como neste repositório, a pasta do programa de investidor e os arquivos do programa de admin no mesmo diretório 
 
-** Exemplo de Uso **
--> O cliente pode iniciar o processo de registro, onde será solicitado a fornecer seu CPF e senha.
--> Após o registro, o cliente pode realizar depósitos e saques, seguindo as validações implementadas para garantir que as entradas são válidas.
--> O cliente pode acessar seu extrato de transações a qualquer momento para visualizar suas atividades financeiras.
 
 
 ** Compilação e Execução **
 ## Para compilar o projeto, utilize o comando:
-    gcc projeto.c cadastro.c criptomoedas.c
+    gcc main.c admin.c menu_funcoes.c criptomoedas.c clientes.c
 ## Para executar o programa, use:
     acc .\a.exe
 
