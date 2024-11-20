@@ -47,18 +47,16 @@ int main(){
 
     //Menu admin
     Criptomoedas criptomoedas;
-    criptomoedas = TxtToCripto(criptomoedas);
 
     while(true){
         char opcao;
         printf("Bem Vindo!!\n");
         printf("1. Cadastro de Novo Investidor\n");
         printf("2. Excluir Investidor\n");
-        printf("3. Cadastro de Criptomoeda\n");
-        printf("4. Excluir Criptomoeda\n");
-        printf("5. Consultar Saldo Investidor\n");
-        printf("6. Consultar Extrato Investidor\n");
-        printf("7. Sair\n");
+        printf("3. Consultar Saldo Investidor\n");
+        printf("4. Consultar Extrato Investidor\n");
+        printf("5. Atualizar Cotacao Criptomoedas\n");
+        printf("6. Sair\n");
         printf("\nDigite a opcao desejada: ");
         scanf("%c", &opcao);
         getchar();
@@ -70,23 +68,20 @@ int main(){
             lista_Clientes = ExcluirCliente(lista_Clientes);
             break;
           case '3':
-            
-            break;
-          case '4':
-            
-            break;
-          case '5':
             ConsultarSaldo(lista_Clientes);
             break;
-          case '6':
+          case '4':
             ConsultarExtrato(lista_Clientes);
             break;
-          case '7':
+          case '5':
+            criptomoedas = TxtToCripto(criptomoedas);
+            criptomoedas = AtualizarCotacao(criptomoedas);
+            break;
+          case '6':
             printf("Saindo...");
-            return 0;
             break;
           default:
-            
+            printf("Digito Invalido\n\n");
             break;
           }
 

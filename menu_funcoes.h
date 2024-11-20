@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "clientes.h"
+#include "criptomoedas.h"
 #ifndef MENU_FUNCOES_H
 #define MENU_FUNCOES_H
 
@@ -17,4 +18,8 @@ void ConsultarSaldo(ListaClientes lista_Clientes);
 
 //Consulta do Extrato
 void ConsultarExtrato(ListaClientes lista_Clientes);
+
+//Atualiza Cotação das Cripto
+Criptomoedas AtualizarCotacao(Criptomoedas criptomoedas);
+
 #endif 
