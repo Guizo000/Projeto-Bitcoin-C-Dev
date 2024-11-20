@@ -5,6 +5,8 @@
 //REALIZA O REGISTRO
 ListaClientes RegistrarCliente(ListaClientes lista_Clientes){
 
+    lista_Clientes = TxtToArray(lista_Clientes);
+
     //Input e verificação do cpf
     while(true){
         printf("Digite o cpf do novo investidor -> Sem traco nem pontos: ");
@@ -75,14 +77,15 @@ ListaClientes RegistrarCliente(ListaClientes lista_Clientes){
 void ConsultarSaldo(ListaClientes lista_Clientes){
     //Verificando se existem clientes registrados
     FILE* file;
-    file = fopen("../Projeto_Cripto/usuario.txt", "rb");
+    file = fopen("Projeto_Cripto/usuario.txt", "rb");
     if (file == NULL){
         printf("Nenhum investidor registrado\n\n");
         fclose(file);
         return;
     }
     fclose(file);
-    
+    lista_Clientes = TxtToArray(lista_Clientes);
+
     //Escolhendo cliente
     printf("Digite o cpf do investidor: ");
         char cpf[50];
@@ -114,7 +117,7 @@ void ConsultarSaldo(ListaClientes lista_Clientes){
 void ConsultarExtrato(ListaClientes lista_Clientes){
     //Verificando se existem clientes registrados
     FILE* file;
-    file = fopen("../Projeto_Cripto/usuario.txt", "rb");
+    file = fopen("Projeto_Cripto/usuario.txt", "rb");
     if (file == NULL){
         printf("Nenhum investidor registrado\n\n");
         fclose(file);
@@ -141,7 +144,7 @@ void ConsultarExtrato(ListaClientes lista_Clientes){
         return; 
     }
 
-    char extratoAdress[100] = "../Projeto_Cripto/";
+    char extratoAdress[100] = "Projeto_Cripto/";
     strcat(extratoAdress, lista_Clientes.clientes[lista_Clientes.clienteAtual].extrato);
     file = fopen(extratoAdress, "rb");
 
@@ -167,13 +170,15 @@ void ConsultarExtrato(ListaClientes lista_Clientes){
 ListaClientes ExcluirCliente(ListaClientes lista_Clientes){
     //Verificando se existem clientes registrados
     FILE* file;
-    file = fopen("../Projeto_Cripto/usuario.txt", "rb");
+    file = fopen("Projeto_Cripto/usuario.txt", "rb");
     if (file == NULL){
         printf("Nenhum investidor registrado\n\n");
         fclose(file);
         return lista_Clientes;
     }
     fclose(file);
+
+    lista_Clientes = TxtToArray(lista_Clientes);
 
     //Escolhendo cliente
     printf("Digite o cpf do investidor: ");
@@ -216,16 +221,19 @@ ListaClientes ExcluirCliente(ListaClientes lista_Clientes){
     int indexQtdClientes = lista_Clientes.qtdClientes - 1;
     
     //Excluindo o extrato
-    remove(lista_Clientes.clientes[lista_Clientes.clienteAtual].extrato);
+    char placeHolder[100] = "Projeto_Cripto/";
+    strcat(placeHolder, lista_Clientes.clientes[lista_Clientes.clienteAtual].extrato);
+    remove(placeHolder);
 
     //Excluindo os outros dados
     if(indexQtdClientes = lista_Clientes.clienteAtual){
         strcpy(lista_Clientes.clientes[lista_Clientes.clienteAtual].cpf, "DELETED");
     }else{
-        for(int i = lista_Clientes.clienteAtual; i < lista_Clientes.qtdClientes; i++){
+        int i = 0;
+        for(i = lista_Clientes.clienteAtual; i < lista_Clientes.qtdClientes; i++){
             lista_Clientes.clientes[i] = lista_Clientes.clientes[i + 1];
         }
-        strcpy(lista_Clientes.clientes[indexQtdClientes].cpf, "DELETED");
+        strcpy(lista_Clientes.clientes[i+1].cpf, "DELETED");
     }
     lista_Clientes.qtdClientes--;
 
