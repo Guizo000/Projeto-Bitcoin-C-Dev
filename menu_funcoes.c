@@ -1,4 +1,6 @@
 #include "menu_funcoes.h"
+#include "stdlib.h"
+#include "time.h"
 
 //REALIZA O REGISTRO
 ListaClientes RegistrarCliente(ListaClientes lista_Clientes){
@@ -232,4 +234,22 @@ ListaClientes ExcluirCliente(ListaClientes lista_Clientes){
     printf("Investidor excluido com sucesso\n\n");
 
     return lista_Clientes;
+}
+
+//ATUALIZA A COTAÇÃO DAS CRIPTOMOEDAS
+Criptomoedas AtualizarCotacao(Criptomoedas criptomoedas){
+  printf("\nCotacao Antiga:\n ");
+  printf("Bitcoin: %.2f\tEthereum: %.2f\tRipple: %.2f\n\n", criptomoedas.bitcoin, criptomoedas.ethereum, criptomoedas.ripple);
+
+  srand(time(0)); 
+  float number = (rand() % 11) - 5; // GERA NUMEROS ALEATORIOS DE -5 A 5, SEM NUMEROS DECIMAIS
+  number = number/100;
+  printf("Atualizacao aplicada: %.2f\n\n", number);
+  criptomoedas.bitcoin += criptomoedas.bitcoin * number;
+  criptomoedas.ethereum += criptomoedas.ethereum * number;
+  criptomoedas.ripple += criptomoedas.ripple * number;
+
+  printf("Nova Cotacao:\n ");
+  printf("Bitcoin: %.2f\tEthereum: %.2f\tRipple: %.2f\n\n", criptomoedas.bitcoin, criptomoedas.ethereum, criptomoedas.ripple);
+  return criptomoedas;
 }
