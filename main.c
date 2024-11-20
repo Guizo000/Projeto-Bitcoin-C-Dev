@@ -7,11 +7,6 @@
 int main(){
     ListaClientes lista_Clientes;
     lista_Clientes = TxtToArray(lista_Clientes);
-
-    for(int i = 0; i < sizeof(lista_Clientes.clientes) / sizeof(lista_Clientes.clientes[0]); i++){
-        printf("\nCPF: %s", lista_Clientes.clientes[i].cpf);
-    }
-    printf("\n\n");
     
     ListaAdmins lista_admins;
     lista_admins = TxtToArrayAdmin(lista_admins);
