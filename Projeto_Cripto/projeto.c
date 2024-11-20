@@ -3,11 +3,19 @@
 #include <time.h>
 #include <stdlib.h>
 
+bool clienteDeletado(ListaClientes lista_Clientes){
+  if(strcmp("DELETED", lista_Clientes.clientes[lista_Clientes.clienteAtual].cpf) == 0){
+    printf("Usuario Deletado...");
+    return true;
+  }else{
+    return false;
+  }
+}
+
 //MAIN
 int main(){
     FILE *file;
     ListaClientes lista_Clientes;
-    lista_Clientes = TxtToArray(lista_Clientes, file);
 
     //Menu Login/Registro
     bool voltarmenu = true;
@@ -28,6 +36,7 @@ int main(){
                 }
                 break;
             case '2':
+                lista_Clientes = TxtToArray(lista_Clientes, file);
                 lista_Clientes = Logar(lista_Clientes, &voltarmenu);
                 if(voltarmenu){
                     continue;
@@ -46,6 +55,7 @@ int main(){
     //Menu Usuario
     Criptomoedas criptomoedas;
     FILE* criptoFile;
+    criptomoedas = TxtToCripto(criptoFile, criptomoedas);
 
     while(true){
         char opcao;
@@ -63,28 +73,44 @@ int main(){
         getchar();
         switch(opcao){
           case '1':
+            lista_Clientes = TxtToArray(lista_Clientes, file);
+            if(clienteDeletado(lista_Clientes)){return 0;}
             ConsultarSaldo(lista_Clientes);
             break;
           case '2':
+            lista_Clientes = TxtToArray(lista_Clientes, file);
+            if(clienteDeletado(lista_Clientes)){return 0;}
             ConsultarExtrato(lista_Clientes.clientes[lista_Clientes.clienteAtual].extrato);
             break;
           case '3':
+            lista_Clientes = TxtToArray(lista_Clientes, file);
+            if(clienteDeletado(lista_Clientes)){return 0;}
             lista_Clientes = Depositar(lista_Clientes, file);
             break;
           case '4':
+            lista_Clientes = TxtToArray(lista_Clientes, file);
+            if(clienteDeletado(lista_Clientes)){return 0;} 
             lista_Clientes = Sacar(lista_Clientes, file);
             break;
           case '5':
+            lista_Clientes = TxtToArray(lista_Clientes, file);
+            if(clienteDeletado(lista_Clientes)){return 0;}
             lista_Clientes = ComprarCriptomoeda(lista_Clientes, file, criptomoedas);
             break;
           case '6':
+            lista_Clientes = TxtToArray(lista_Clientes, file);
+            if(clienteDeletado(lista_Clientes)){return 0;}
             lista_Clientes = VenderCriptomoeda(lista_Clientes, file, criptomoedas);
             break;
           case '7':
+            lista_Clientes = TxtToArray(lista_Clientes, file);
+            if(clienteDeletado(lista_Clientes)){return 0;}
             criptomoedas = TxtToCripto(criptoFile, criptomoedas);
             criptomoedas = AtualizarCotacao(criptomoedas);
             break;
           case '8':
+            lista_Clientes = TxtToArray(lista_Clientes, file);
+            if(clienteDeletado(lista_Clientes)){return 0;}
             printf("Saindo...");
             return 0;
             break;
