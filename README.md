@@ -2,16 +2,16 @@ Criadores:
 Érik Ordine Garcia     RA: 22.224.021-0
 Guilherme Rocha Santos RA: 22.124.061-7
 
-Este repositório contém a implementação de um sistema em C para gerenciamento e uma exchange e criptomoedas, nele você podera exluir e adicionar investidores, atualizar a cotação e conferir os dados os clientes.
+Este repositório contém a implementação de um sistema em C para administração de uma exchange de criptomoedas, nele você podera exluir e adicionar investidores, atualizar a cotação e conferir os dados os clientes.
 
 ** Estrutura de Arquivos **
 - main.c: Arquivo principal onde o programa é executado - contém o menu.
-- admin.h: Cabeçalho que contém as definições das estruturas de admin.
+- admin.h: Cabeçalho que contém as definições das estruturas e funções de admin.
 - admin.c: Contém as funções relacionadas ao login e cadastro de admins.
 - criptomoedas.h: Cabeçalho que contém as definições das estruturas e funções relacionadas a criptomoedas.
 - criptomoedas.c: Contém as funções relacionadas à escrita das criptomoedas em struct e txt.
 - menu_funcoes.h: Cabeçalho que contém as definições das estruturas e funções que o admin pode executar.
-- menu_funcoes.c: Contém as funções que o amin poe executar.
+- menu_funcoes.c: Contém as funções que o admin pode executar.
 - clientes.h: Cabeçalho que contém as definições das estruturas de clientes.
 - clientes.c: Contém as funções relacionadas ao cadastro e login de clientes.
 
